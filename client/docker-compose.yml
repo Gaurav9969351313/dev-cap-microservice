@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  jenkins:
+    build: ./pipeline-setup/jenkins
+    user: root
+    privileged: true
+    restart: always
+    ports:
+      - 8081:8080
+      - 50000:50000
+    container_name: jenkins
+    volumes:
+      - ./volumes/data:/var/jenkins_home
+      - ./volumes/artifacts:/var/jenkins_artifacts
+      - /var/run/docker.sock:/var/run/docker.sock

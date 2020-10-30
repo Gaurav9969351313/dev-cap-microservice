@@ -1,0 +1,84 @@
+pipeline {
+
+  agent any
+
+  environment {
+    EMAIL_TO = 'taleleyashwant@gmail.com'
+  }
+
+  stages {
+    stage('Clean Workspace'){
+        steps {
+            cleanWs()
+        }
+    }
+
+    stage ('checkout'){
+      steps{
+        checkout scm
+      }
+    }
+
+    stage('Restore') {
+        steps {
+            sh 'npm install'
+        }
+    }
+
+    stage('Build') {
+        steps {
+          sh 'npm run build'
+        }
+    }
+
+    stage('Docker Build') { 
+      agent none
+      steps {
+        script {
+          sh 'docker build -t gauravtalele/angular-jenkins-cicd:latest .'
+        }
+      }
+    }
+
+    stage('Docker push') { 
+      agent none
+      steps {
+        script {
+          sh "docker login -u 'gauravtalele' -p 'gauravtalele*123'"
+          sh 'docker push gauravtalele/angular-jenkins-cicd:latest'
+        }
+      }
+    }
+  }
+
+  post {	
+        always {  	
+            echo 'This will always run'
+        }	
+
+        success {  	
+             emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 	
+                    to: "${EMAIL_TO}", 	
+                    subject: 'Build Sucessful in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER. Docker production images sent to docker hub'	
+        }	
+
+        failure {	
+            emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 	
+                    to: "${EMAIL_TO}", 	
+                    subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'	
+        }	
+
+        unstable {	
+            emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 	
+                    to: "${EMAIL_TO}", 	
+                    subject: 'Unstable build in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'	
+        }	
+
+        changed {	
+            emailext body: 'Check console output at $BUILD_URL to view the results.', 	
+                    to: "${EMAIL_TO}", 	
+                    subject: 'Jenkins build is back to normal: $PROJECT_NAME - #$BUILD_NUMBER'	
+        }	
+    }	
+}
+    

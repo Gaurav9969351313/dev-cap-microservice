@@ -1,0 +1,16 @@
+image: docker:stable
+services: 
+    - docker:dind
+
+stages:
+    - build_uat
+    - release_uat
+
+variables:
+    CLI_VERSION: 10.1.2
+    DOCKER_DRIVER: overlay
+
+docker-build:
+    stage: build
+    script:
+        - docker login -u _ -p $HEROKU_TOKEN registry.heroku.com
