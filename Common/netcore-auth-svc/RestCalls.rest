@@ -1,0 +1,57 @@
+@baseUrl=http://localhost:5000
+
+# Admin SignUP
+POST {{baseUrl}}/api/auth/signup HTTP/1.1 
+Content-Type: application/json
+
+{
+    "email":"yashwanttalele@gmail.com", 
+    "password": "YashwantTalele&123", 
+    "department":"hr", 
+    "role": "Admin"
+}
+
+### Admin SignIn
+POST {{baseUrl}}/api/auth/signin HTTP/1.1 
+Content-Type: application/json
+
+{
+    "username": "yashwanttalele@gmail.com",
+    "email":"yashwanttalele@gmail.com", 
+    "password": "YashwantTalele&123"
+}
+
+########################################################
+
+### User SignUp
+POST {{baseUrl}}/api/auth/signup HTTP/1.1 
+Content-Type: application/json
+
+{
+    "email":"rekhatalele@gmail.com", 
+    "password": "RekhaTalele&123", 
+    "department":"Tech", 
+    "role": "User"
+}
+
+### User SignIn
+POST {{baseUrl}}/api/auth/signin HTTP/1.1 
+Content-Type: application/json
+
+{
+    "username": "rekhatalele@gmail.com",
+    "email":"rekhatalele@gmail.com", 
+    "password": "RekhaTalele&123", 
+}
+
+#### =======================================================
+# delete from [devCapium].[dbo].[AspNetUsers] where Id = '';
+
+GET {{baseUrl}}/api/auth/getByAdminOnly
+
+### By Policy
+
+GET {{baseUrl}}/api/auth/getByAdminDepPolicy
+
+###
+GET {{baseUrl}}/api/auth/getByMemberDepPolicy

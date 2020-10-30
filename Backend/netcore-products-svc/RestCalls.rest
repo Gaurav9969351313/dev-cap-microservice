@@ -1,0 +1,22 @@
+@baseUrl=http://localhost:5000
+
+### Get All Products
+GET {{baseUrl}}/api/products HTTP/1.1
+
+### Get Product By ID
+GET {{baseUrl}}/api/products/2 HTTP/1.1
+
+### Create New Product
+POST {{baseUrl}}/api/products HTTP/1.1
+Content-Type: application/json
+
+{
+    "product_name": "Nike a7",
+    "brand_id": 12,
+    "category_id": 1,
+    "model_year": 1996,
+    "list_price": 15.2
+}
+
+### Delete A Product By ID
+DELETE {{baseUrl}}/api/products/1 HTTP/1.1

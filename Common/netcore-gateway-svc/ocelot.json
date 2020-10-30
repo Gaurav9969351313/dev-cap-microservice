@@ -1,0 +1,59 @@
+{
+    "ReRoutes": [
+      {
+        "UseServiceDiscovery": true,
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "ServiceName": "netcore-customer-svc",
+        "LoadBalancerOptions": {
+          "Type": "LeastConnection"
+        },
+        "UpstreamPathTemplate": "/gateway/customer-svc/{everything}",
+        "UpstreamHttpMethod": [ "GET", "PUT", "POST", "DELETE" ],
+        "ReRoutesCaseSensitive": false
+      },
+      {
+        "UseServiceDiscovery": true,
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "ServiceName": "netcore-products-svc",
+        "LoadBalancerOptions": {
+          "Type": "LeastConnection"
+        },
+        "UpstreamPathTemplate": "/gateway/product-svc/{everything}",
+        "UpstreamHttpMethod": [ "GET", "PUT", "POST", "DELETE" ],
+        "ReRoutesCaseSensitive": false
+      },
+      {
+        "UseServiceDiscovery": true,
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "ServiceName": "netcore-auth-svc",
+        "LoadBalancerOptions": {
+          "Type": "LeastConnection"
+        },
+        "UpstreamPathTemplate": "/gateway/auth-svc/{everything}",
+        "UpstreamHttpMethod": [ "GET", "PUT", "POST", "DELETE" ],
+        "ReRoutesCaseSensitive": false
+      },
+      {
+        "UseServiceDiscovery": true,
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "ServiceName": "netcore-logging-svc",
+        "LoadBalancerOptions": {
+          "Type": "LeastConnection"
+        },
+        "UpstreamPathTemplate": "/gateway/logging-svc/{everything}",
+        "UpstreamHttpMethod": [ "GET", "PUT", "POST", "DELETE" ],
+        "ReRoutesCaseSensitive": false
+      }
+    ],
+    "GlobalConfiguration": {
+      "ServiceDiscoveryProvider": {
+        "Host": "localhost",
+        "Port": 8500,
+        "Type": "Consul"
+      }
+    }
+  }

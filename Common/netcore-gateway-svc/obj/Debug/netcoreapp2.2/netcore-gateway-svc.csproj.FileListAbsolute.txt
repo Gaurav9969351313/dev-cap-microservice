@@ -1,0 +1,15 @@
+C:\Users\GauravTalele\Desktop\devCapium\Common\netcore-gateway-svc\bin\Debug\netcoreapp2.2\ocelot.json
+C:\Users\GauravTalele\Desktop\devCapium\Common\netcore-gateway-svc\bin\Debug\netcoreapp2.2\netcore-gateway-svc.deps.json
+C:\Users\GauravTalele\Desktop\devCapium\Common\netcore-gateway-svc\bin\Debug\netcoreapp2.2\netcore-gateway-svc.runtimeconfig.json
+C:\Users\GauravTalele\Desktop\devCapium\Common\netcore-gateway-svc\bin\Debug\netcoreapp2.2\netcore-gateway-svc.runtimeconfig.dev.json
+C:\Users\GauravTalele\Desktop\devCapium\Common\netcore-gateway-svc\bin\Debug\netcoreapp2.2\netcore-gateway-svc.dll
+C:\Users\GauravTalele\Desktop\devCapium\Common\netcore-gateway-svc\bin\Debug\netcoreapp2.2\netcore-gateway-svc.pdb
+C:\Users\GauravTalele\Desktop\devCapium\Common\netcore-gateway-svc\obj\Debug\netcoreapp2.2\netcore-gateway-svc.csprojAssemblyReference.cache
+C:\Users\GauravTalele\Desktop\devCapium\Common\netcore-gateway-svc\obj\Debug\netcoreapp2.2\netcore-gateway-svc.csproj.CoreCompileInputs.cache
+C:\Users\GauravTalele\Desktop\devCapium\Common\netcore-gateway-svc\obj\Debug\netcoreapp2.2\netcore-gateway-svc.RazorAssemblyInfo.cache
+C:\Users\GauravTalele\Desktop\devCapium\Common\netcore-gateway-svc\obj\Debug\netcoreapp2.2\netcore-gateway-svc.RazorAssemblyInfo.cs
+C:\Users\GauravTalele\Desktop\devCapium\Common\netcore-gateway-svc\obj\Debug\netcoreapp2.2\netcore-gateway-svc.AssemblyInfoInputs.cache
+C:\Users\GauravTalele\Desktop\devCapium\Common\netcore-gateway-svc\obj\Debug\netcoreapp2.2\netcore-gateway-svc.AssemblyInfo.cs
+C:\Users\GauravTalele\Desktop\devCapium\Common\netcore-gateway-svc\obj\Debug\netcoreapp2.2\netcore-gateway-svc.RazorTargetAssemblyInfo.cache
+C:\Users\GauravTalele\Desktop\devCapium\Common\netcore-gateway-svc\obj\Debug\netcoreapp2.2\netcore-gateway-svc.dll
+C:\Users\GauravTalele\Desktop\devCapium\Common\netcore-gateway-svc\obj\Debug\netcoreapp2.2\netcore-gateway-svc.pdb

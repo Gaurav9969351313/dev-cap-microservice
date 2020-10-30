@@ -1,0 +1,4 @@
+dotnet tool install -g dotnet-ef
+
+dotnet ef migrations add init -v
+dotnet ef database update -v

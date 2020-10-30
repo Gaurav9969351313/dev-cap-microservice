@@ -1,0 +1,25 @@
+@baseUrl=http://localhost:9004
+
+### Get All Customers
+GET {{baseUrl}}/api/customers HTTP/1.1
+
+### Get Customer By ID
+GET {{baseUrl}}/api/customers/2 HTTP/1.1
+
+### Create New Customer
+POST {{baseUrl}}/api/customers HTTP/1.1
+Content-Type: application/json
+
+{
+    "first_name": "Gaurav",
+    "last_name": "Talele",
+    "phone": "9969351313",
+    "email": "gauravtalele@gmail.com",
+    "street": "jai ",
+    "city": "ulhasnagar",
+    "state": "maharashtra",
+    "zip_code": "421005"
+}
+
+### Delete A Customer By ID
+DELETE {{baseUrl}}/api/customers/1 HTTP/1.1

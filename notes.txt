@@ -1,0 +1,91 @@
+
+Angular UI Client --> Ocelot API Gateway --> Consule SD --> API 1
+                                                        --> API 2
+                                                                |
+                                                                --> Logging CommonAPI
+
+
+netcore-gateway-svc     5000    7005
+netcore-logging-svc     7000
+netcore-auth-svc        7001
+
+svc-discovery-server    8500    7085
+
+netcore-accounts-svc    9001    7001
+netcore-payroll-svc     9002    7002
+netcore-products-svc    9003
+netcore-customer-svc    9004
+
+Trace ==> TraceID + Span ID + Baggage 
+
+SSMS UI 
+http://localhost:8081
+
+jaeger ui
+http://localhost:16686
+
+consul ui
+http://localhost:8500
+
+RabbitMQ ui
+http://localhost:15672
+
+Jenkins ui
+http://localhost:11000
+
+u & p: capium
+
+gitlab private Version control 
+http://localhost:8080
+pass: capium@123
+
+===========================================================================
+docker-compose -f docker-compose.developement.yaml up -d consul-server
+docker-compose -f docker-compose.developement.yaml up -d jaeger-server
+docker-compose -f docker-compose.developement.yaml up -d rabbitmq-server
+docker-compose -f docker-compose.developement.yaml up -d jenkins-server
+docker-compose -f docker-compose.developement.yaml up -d ssms
+docker-compose -f docker-compose.developement.yaml up -d mssql-server
+docker-compose -f docker-compose.developement.yaml up -d pgdb
+
+docker-compose -f docker-compose.developement.yaml down
+
+>> docker-compose -f docker-compose.developement.yaml up
+
+docker image build -t account-svc . 
+docker container run -d -p 9001:9001 account-svc
+
+docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+===========================================================================
+
+Database
+        Mongo
+        SQL     
+**      Redis - All Masters Should be kept inside redis.
+
+** Code container 
+
+app.capium.com
+raj123@capium.com
+capium@123
+
+github creds
+rajendracapium
+Swayam@2020
+
+docker-compose -f docker-compose.developement.yaml up -d consul
+http://localhost:8500
+
+Eureka
+https://github.com/catcherwong-archive/APIGatewayDemo
+
+Consule
+https://github.com/Skisas/ApiGateway-example
+https://github.com/harobed/consul-acl-client-tutorial
+
+Microservices Docker Composing Best 
+https://github.com/devmentors/Pacco
+
+RabbitMQ
+https://www.c-sharpcorner.com/article/consuming-rabbitmq-messages-in-asp-net-core/
+https://www.c-sharpcorner.com/article/publishing-rabbitmq-message-in-asp-net-core/

@@ -1,0 +1,4 @@
+@baseUrl=http://localhost:9007
+
+### Test 
+GET {{baseUrl}}/api/values HTTP/1.1

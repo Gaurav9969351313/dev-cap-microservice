@@ -1,0 +1,133 @@
+ 
+version: '3'
+
+services:
+  # node-svc:
+  #   build: ./Backend/node--svc
+  #   ports:
+  #       - "3000:3000"
+  #   volumes:
+  #       - .:/code
+
+  # pgdb:
+  #   image: postgres
+  #   restart: always
+  #   ports:
+  #       - 5432:5432
+  #   environment:
+  #     POSTGRES_USER: root
+  #     POSTGRES_PASSWORD: example
+  #     POSTGRES_DB: employees  
+
+  # ssms:
+  #   image: adminer
+  #   ports:
+  #     - 8081:8080
+
+  # mssql-server:
+  #   image: mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
+  #   container_name: mssql-server
+  #   environment:
+  #     - ACCEPT_EULA=Y
+  #     - SA_PASSWORD=Password_01
+  #   ports:
+  #     - "1433:1433"
+  #   volumes:
+  #     - ./Volumes/mssqldata:/var/opt/mssql/data
+
+  rabbitmq-server:
+    container_name: rabbitmq
+    hostname: rabbitmq
+    image: rabbitmq:3-management
+    restart: unless-stopped
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=user
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  consul-server:
+    image: consul:latest
+    command: consul agent -dev -log-level=warn -ui -client=0.0.0.0
+    restart: unless-stopped
+    ports:
+      - "8500:8500"
+    hostname: consul-service-discovery-server
+    container_name: sd-server
+
+  jaeger-server:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger-server
+    restart: unless-stopped
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "14268:14268"
+      - "9411:9411"
+
+  # jenkins-server:
+  #   image: jenkinsci/blueocean
+  #   privileged: true
+  #   user: root
+  #   ports:
+  #     - 11000:8080
+  #     - 50000:50000
+  #   container_name: jenkins
+  #   volumes:
+  #     - ./Volumes/jenkins-home:/var/jenkins_home
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - /usr/local/bin/docker:/usr/local/bin/docker
+
+  # netcore-gateway-svc:
+  #   build:
+  #     context: .
+  #     dockerfile: ./Common/netcore-gateway-svc
+  #   container_name: gateway-svc
+  #   ports:
+  #     - "5000:5000"
+  #   depends_on: 
+  #     - "consul-server"
+
+  # netcore-logging-svc:
+  #   build:
+  #     context: .
+  #     dockerfile: ./Common/netcore-logging-svc
+  #   container_name: logging-svc
+  #   ports:
+  #     - "7000:7000"
+  #   depends_on: 
+  #     - "consul-server"
+
+  # netcore-auth-svc:
+  #   build:
+  #     context: .
+  #     dockerfile: ./Common/netcore-auth-svc
+  #   container_name: auth-svc
+  #   ports:
+  #     - "7001:7001"
+  #   depends_on: 
+  #     - "consul-server"
+
+  # netcore-products-svc:
+  #   build:
+  #     context: .
+  #     dockerfile: ./Backend/netcore-products-svc
+  #   container_name: products-svc
+  #   ports:
+  #     - "9003:9003"
+  #   depends_on: 
+  #     - "consul-server"
+
+  # netcore-customer-svc:
+  #   build:
+  #     context: .
+  #     dockerfile: ./Backend/netcore-customer-svc
+  #   container_name: customer-svc
+  #   ports:
+  #     - "9004:9004"
+  #   depends_on: 
+  #     - "consul-server"
